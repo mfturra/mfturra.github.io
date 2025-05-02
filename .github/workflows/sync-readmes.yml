@@ -1,0 +1,65 @@
+name: Sync Project READMEs
+
+on:
+  workflow_dispatch:   # Allow manual trigger
+  schedule:
+    - cron: '0 0 * * 1'  # Runs every Monday at midnight UTC
+
+jobs:
+  sync-readmes:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout this repo
+        uses: actions/checkout@v1
+      - name: Fetch and wrap READMEs into index.md in subfolders
+        run: |
+          mkdir -p projects
+
+          declare -A repos=(
+            ["american-university-sim"]="mfturra/american-uni-sim"
+            ["professional-work"]="mfturra/professional-work"
+            ["gpt-exploration"]="mfturra/gpt-exploration"
+            ["occupations-cost"]="mfturra/occupations-cost"
+            ["go-practice"]="mfturra/go-practice"
+          )
+
+          declare -A titles=(
+            ["american-university-sim"]="American University Simulation"
+            ["professional-work"]="Professional Work"
+            ["gpt-exploration"]="GPT Exploration"
+            ["occupations-cost"]="Occupations Cost"
+            ["go-practice"]="Golang Exploration"
+          )
+          
+          for folder in "${!repos[@]}"; do
+            repo="${repos[$folder]}"
+            title="${titles[$folder]}"
+            mkdir -p "projects/$folder"
+
+            curl -s "https://raw.githubusercontent.com/$repo/main/README.md" > "projects/$folder/temp.md"
+
+            {
+              echo "---"
+              echo "layout: page"
+              echo "title: \"$title\""
+              echo "permalink: /projects/$folder/"
+              echo "---"
+              echo ""
+              cat "projects/$folder/temp.md"
+            } > "projects/$folder/index.md"
+
+            rm "projects/$folder/temp.md"
+          done
+
+      - name: Commit and push updates
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/mfturra/mfturra.github.io.git
+          git add projects/
+          git diff --quiet && git diff --staged --quiet || git commit -m "Auto-sync project READMEs to subfolders"
+          git push
