@@ -1,6 +1,6 @@
 ---
 icon: fas fa-info-circle
-order: 4
+order: 2
 ---
 
 👋 Hi, I'm Matheus Turra! I'm an engineer and software developer in a healthcare organization focusing on the integration of Cloud and AI vendor digital tools that improve clinical operational workflows.
