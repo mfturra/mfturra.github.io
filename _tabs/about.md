@@ -3,7 +3,7 @@ icon: fas fa-info-circle
 order: 2
 ---
 
-## Olá :brazil:
+## Olá 🇧🇷
 
 I'm an engineer and software developer in a healthcare organization focusing on the integration of Cloud and AI vendor digital tools that improve clinical operational workflows. I'm deeply interested in transforming real-world challenges into virtual solutions. Lately, I've been working on open-source web tools designed to help university students in the U.S. better understand the often-overlooked costs of higher education. These tools use accurate, real-world data sourced directly from government websites to ensure transparency and reliability.
 
