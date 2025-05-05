@@ -12,13 +12,13 @@ jobs:
       contents: write
     steps:
       - name: Checkout this repo
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - name: Fetch and wrap READMEs into index.md in subfolders
         run: |
           mkdir -p projects
 
           declare -A repos=(
-            ["american-university-sim"]="mfturra/american-uni-sim"
+            ["american-university-sim"]="mfturra/american-university-sim"
             ["professional-work"]="mfturra/professional-work"
             ["gpt-exploration"]="mfturra/gpt-exploration"
             ["occupations-cost"]="mfturra/occupations-cost"
@@ -47,7 +47,7 @@ jobs:
               echo "permalink: /projects/$folder/"
               echo "---"
               echo ""
-              cat "projects/$folder/temp.md"
+              grep -v '^# ' "projects/$folder/temp.md"
             } > "projects/$folder/index.md"
 
             rm "projects/$folder/temp.md"
