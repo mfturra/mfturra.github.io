@@ -4,6 +4,8 @@ title: "Occupations Cost"
 permalink: /projects/occupations-cost/
 ---
 
+**🌐 [View Deployed App](https://occupations-cost.onrender.com)**
+
 ### Project Description
 Every year, graduates from universities and colleges across the U.S.A. leave with debt. This project's hope is to bring undergrads some price transparency to teach them how much their degree will cost in the long run, even after they leave college.
 
