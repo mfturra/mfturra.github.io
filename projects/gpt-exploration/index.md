@@ -4,7 +4,6 @@ title: "GPT Exploration"
 permalink: /projects/gpt-exploration/
 ---
 
-# General Overview
 When OpenAI released ChatGPT, they made GPT tools main stream. Capturing audiences with it's ability to generate new content from what appeared to be thin air. This repository is an attempt to explore how to effectively utilize GPT models to generate new content in specific web apps. JavaScript builds for a recipe generator and chatbot were the medium to test out these new tools.
 
 ## 🗂️ Use Cases

@@ -4,7 +4,6 @@ title: "Golang Exploration"
 permalink: /projects/go-practice/
 ---
 
-# 🏢 go-practice
 ### 🛠️ Tools
 Go Language
 

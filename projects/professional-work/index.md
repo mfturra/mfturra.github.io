@@ -4,7 +4,6 @@ title: "Professional Work"
 permalink: /projects/professional-work/
 ---
 
-# Professional-Work
 While working in the hospital institution's emerging technologies team, projects were taken on to solve real world problems that impacted varying degrees of patients and care team operational workflows. The folders in this repo represent the different problems that were solved using different programming languages (#Python, #JavaScript, PostgreSQL, Powershell) to help internal stakeholders take action on insights that were acquired.
 
 The projects were organized into the following folders
