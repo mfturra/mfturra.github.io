@@ -26,11 +26,15 @@ jobs:
           )
 
           declare -A titles=(
-            ["american-university-sim"]="American University Simulation"
             ["professional-work"]="Professional Work"
-            ["gpt-exploration"]="GPT Exploration"
             ["occupations-cost"]="Occupations Cost"
+            ["gpt-exploration"]="GPT Exploration"
+            ["american-university-sim"]="American University Simulation"
             ["go-practice"]="Golang Exploration"
+          )
+
+          declare -A deploy_links=(
+            ["occupations-cost"]="https://occupations-cost.onrender.com"
           )
           
           for folder in "${!repos[@]}"; do
@@ -40,6 +44,8 @@ jobs:
 
             curl -s "https://raw.githubusercontent.com/$repo/main/README.md" > "projects/$folder/temp.md"
 
+            deploy_link="${deploy_links[$folder]}"
+
             {
               echo "---"
               echo "layout: page"
@@ -47,6 +53,10 @@ jobs:
               echo "permalink: /projects/$folder/"
               echo "---"
               echo ""
+              if [[ -n "$deploy_link" ]]; then
+                echo "**🌐 [View Deployed App]($deploy_link)**"
+                echo ""
+              fi
               grep -v '^# ' "projects/$folder/temp.md"
             } > "projects/$folder/index.md"
 
